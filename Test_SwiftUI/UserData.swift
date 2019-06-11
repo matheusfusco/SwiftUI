@@ -18,7 +18,7 @@ final class UserData: BindableObject {
         }
     }
     
-    var news = customNews {
+    var spoilers = spoilerList {
         didSet {
             didChange.send(self)
         }

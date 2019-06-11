@@ -8,24 +8,24 @@
 
 import SwiftUI
 
-struct NewsRow : View {
-    var news: News
+struct SpoilerRow : View {
+    var spoiler: Spoiler
     var body: some View {
         HStack {
-            news.image
+            spoiler.image
                 .resizable()
                 .frame(width: 50, height: 50)
                 .aspectRatio(1, contentMode: .fit)
             VStack {
-                Text(news.title)
+                Text(spoiler.title)
                     .font(.largeTitle)
-                Text(news.subtitle)
+                Text(spoiler.subtitle)
                     .font(.subheadline)
             }
             
             Spacer()
             
-            if news.isFavorite {
+            if spoiler.isFavorite {
                 Image("ic-limit")
                     .resizable()
                     .frame(width: 25, height: 25)
@@ -37,9 +37,9 @@ struct NewsRow : View {
 }
 
 #if DEBUG
-struct NewsRow_Previews : PreviewProvider {
+struct SpoilerRow_Previews : PreviewProvider {
     static var previews: some View {
-        NewsRow(news: News(id: customNews[0].id, image: customNews[0].image, title: customNews[0].title, subtitle: customNews[0].subtitle, description: customNews[0].description, isFavorite: customNews[0].isFavorite))
+        SpoilerRow(spoiler: Spoiler(id: spoilerList[0].id, image: spoilerList[0].image, title: spoilerList[0].title, subtitle: spoilerList[0].subtitle, description: spoilerList[0].description, isFavorite: spoilerList[0].isFavorite))
     }
 }
 #endif

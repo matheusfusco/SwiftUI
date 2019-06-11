@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct News: Identifiable {
+struct Spoiler: Identifiable {
     var id: Int
     var image: Image
     var title: String

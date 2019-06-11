@@ -8,20 +8,26 @@
 
 import SwiftUI
 
-let customNews: [News] = [News(id: 1,
+let spoilerList: [Spoiler] = [Spoiler(id: 1,
                                image: Image("ic-limit"),
                                title: "Capitão América",
                                subtitle: "O que aconteceu com ele?",
                                description: "Steve Rogers volta no tempo para deixar as jóias do infinito em seus devidos lugares e fica por lá para ter o romance que nunca pôde ter com Peggy Carter!",
                                isFavorite: false),
-                          News(id: 2,
+                          Spoiler(id: 2,
                                image: Image("ic-limit"),
                                title: "Homem de Ferro",
                                subtitle: "O que aconteceu com ele?",
                                description: "Tony Stark morre ao final de Vingagores Ultimato, após estalar os dedos com a manopla e se sacrificar para salvar o mundo!",
-                               isFavorite: false)]
+                               isFavorite: false),
+                          Spoiler(id: 3,
+                                  image: Image("ic-limit"),
+                                  title: "Hulk",
+                                  subtitle: "O que aconteceu com ele?",
+                                  description: "Banner se 'funde' com Hulk, se tornando o Professor Hulk, e usa a Manopla do Infinito criada por Tony Stark para reviver todos os mortos por Thanos pelo estalar de dedos ao fim de Guerra Infinita.",
+                                  isFavorite: false)]
 
-struct NewsTableView : View {
+struct SpoilerList : View {
     @EnvironmentObject var userData: UserData
     
     var body: some View {
@@ -37,10 +43,10 @@ struct NewsTableView : View {
                 }
             }.padding()
             List {
-                ForEach(self.userData.news) { news in
-                    if !self.userData.showFavoritesOnly || news.isFavorite {
-                        NavigationButton(destination: NewsDetail(news: news)) {
-                            NewsRow(news: news)
+                ForEach(self.userData.spoilers) { spoiler in
+                    if !self.userData.showFavoritesOnly || spoiler.isFavorite {
+                        NavigationButton(destination: SpoilerDetail(spoiler: spoiler)) {
+                            SpoilerRow(spoiler: spoiler)
                         }
                     }
                 }
@@ -51,9 +57,9 @@ struct NewsTableView : View {
 }
 
 #if DEBUG
-struct NewsTableView_Previews : PreviewProvider {
+struct SpoilerList_Previews : PreviewProvider {
     static var previews: some View {
-        NewsTableView()
+        SpoilerList()
     }
 }
 #endif

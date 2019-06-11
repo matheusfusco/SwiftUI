@@ -8,41 +8,41 @@
 
 import SwiftUI
 
-struct NewsDetail : View {
+struct SpoilerDetail : View {
     @EnvironmentObject var userData: UserData
-    var news: News
-    var newsIndex: Int {
-        userData.news.firstIndex(where: { $0.id == news.id })!
+    var spoiler: Spoiler
+    var spoilerIndex: Int {
+        userData.spoilers.firstIndex(where: { $0.id == spoiler.id })!
     }
     
     var body: some View {
         VStack {
-            Text(news.title)
+            Text(spoiler.title)
                 .font(.largeTitle)
             
-            Text(news.description)
+            Text(spoiler.description)
                 .lineLimit(nil)
                 .font(.subheadline)
             
             Button(action: {
-                self.userData.news[self.newsIndex].isFavorite.toggle()
+                self.userData.spoilers[self.spoilerIndex].isFavorite.toggle()
             }) {
-                if !userData.news[newsIndex].isFavorite {
+                if !userData.spoilers[spoilerIndex].isFavorite {
                     Text("Não sou favorito")
                 } else {
                     Text("Sou favorito")
                 }
             }
         }
-        .navigationBarTitle(Text("Vingador nº\(news.id)"), displayMode: .inline)
+        .navigationBarTitle(Text("Vingador nº\(spoiler.id)"), displayMode: .inline)
         .padding()
     }
 }
 
 #if DEBUG
-struct NewsDetail_Previews : PreviewProvider {
+struct SpoilerDetail_Previews : PreviewProvider {
     static var previews: some View {
-        NewsDetail(news: customNews[0])
+        SpoilerDetail(spoiler: spoilerList[0])
     }
 }
 #endif
