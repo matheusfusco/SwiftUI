@@ -8,22 +8,23 @@
 
 import SwiftUI
 
+let whatHappenedToHim = "O que aconteceu com ele?"
 let spoilerList: [Spoiler] = [Spoiler(id: 1,
-                               image: Image("ic-limit"),
+                               image: Image("ic-cap-america"),
                                title: "Capitão América",
-                               subtitle: "O que aconteceu com ele?",
+                               subtitle: whatHappenedToHim,
                                description: "Steve Rogers volta no tempo para deixar as jóias do infinito em seus devidos lugares e fica por lá para ter o romance que nunca pôde ter com Peggy Carter!",
                                isFavorite: false),
                           Spoiler(id: 2,
-                               image: Image("ic-limit"),
+                               image: Image("ic-iron-man"),
                                title: "Homem de Ferro",
-                               subtitle: "O que aconteceu com ele?",
+                               subtitle: whatHappenedToHim,
                                description: "Tony Stark morre ao final de Vingagores Ultimato, após estalar os dedos com a manopla e se sacrificar para salvar o mundo!",
                                isFavorite: false),
                           Spoiler(id: 3,
-                                  image: Image("ic-limit"),
+                                  image: Image("ic-hulk"),
                                   title: "Hulk",
-                                  subtitle: "O que aconteceu com ele?",
+                                  subtitle: whatHappenedToHim,
                                   description: "Banner se 'funde' com Hulk, se tornando o Professor Hulk, e usa a Manopla do Infinito criada por Tony Stark para reviver todos os mortos por Thanos pelo estalar de dedos ao fim de Guerra Infinita.",
                                   isFavorite: false)]
 
@@ -32,10 +33,13 @@ struct SpoilerList : View {
     
     var body: some View {
         NavigationView {
-            Text("Aqui você encontra spoilers sobre os seus personagens favoritos do MCU! E aí, está preparado?")
-                .lineLimit(nil)
-                .padding()
-                .multilineTextAlignment(.center)
+            HStack {
+                Image("ic-avengers-logo")
+                    .frame(width: 25, height: 25, alignment: .center)
+                Text("\n\n\n qui você encontra spoilers sobre os seus personagens favoritos do MCU! E aí, está preparado?")
+                    .lineLimit(nil)
+            }.padding()
+            
             
             VStack {
                 Toggle(isOn: $userData.showFavoritesOnly) {

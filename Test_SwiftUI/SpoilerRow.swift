@@ -11,26 +11,25 @@ import SwiftUI
 struct SpoilerRow : View {
     var spoiler: Spoiler
     var body: some View {
-        HStack {
+        HStack(spacing: 16) {
             spoiler.image
                 .resizable()
                 .frame(width: 50, height: 50)
                 .aspectRatio(1, contentMode: .fit)
-            VStack {
+            VStack(alignment: .leading) {
                 Text(spoiler.title)
-                    .font(.largeTitle)
+                    .font(.title)
                 Text(spoiler.subtitle)
-                    .font(.subheadline)
+                    .font(.footnote)
             }
             
             Spacer()
             
             if spoiler.isFavorite {
-                Image("ic-limit")
+                Image("ic-star-fill")
                     .resizable()
                     .frame(width: 25, height: 25)
                     .aspectRatio(1, contentMode: .fit)
-                    .foregroundColor(.yellow)
             }
         }
     }
