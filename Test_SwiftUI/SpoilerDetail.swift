@@ -44,7 +44,7 @@ struct SpoilerDetail : View {
             
             Text(spoiler.title)
                 .font(.largeTitle)
-            
+            Divider()
             Text(spoiler.description)
                 .lineLimit(nil)
                 .font(.subheadline)
